@@ -2,4 +2,4 @@
 
 ## UML Use case
 
-![Use case Diagram](http://raw.githubusercontent.com/oximenvn/Working-Time-Management/master/UseCase.puml)
+![Use case Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/oximenvn/Working-Time-Management/develop/UseCase.puml)
