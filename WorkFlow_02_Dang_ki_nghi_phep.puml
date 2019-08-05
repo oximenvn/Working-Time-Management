@@ -1,0 +1,29 @@
+title Đăng kí nghỉ phép, về sớm
+@startuml
+|Nhân viên|
+start
+:Nhập thời gian nghỉ phép ;
+|#AntiqueWhite|Hệ thống|
+if(nội dung không đúng?) then (yes)
+    :Yêu cầu nhập lại;
+    |Nhân viên|
+    stop
+else (no)
+endif
+|Hệ thống|
+:Yêu cầu quản lí xác nhận;
+|Quản lí|
+if(Phê duyệt yêu cầu) then (no)
+    |Hệ thống|
+    :Yêu cầu nhận lại;
+    |Nhân viên|
+    stop
+else (yes)
+endif
+|Hệ thống|
+:Thông báo đến kế toán;
+|Kế toán|
+:Nhận thông báo;
+stop
+@enduml
+

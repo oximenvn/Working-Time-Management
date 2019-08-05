@@ -1,0 +1,19 @@
+title Nghiệp vụ chung
+@startuml
+|Nhân viên|
+start
+:Nhập thời gian làm việc;
+|#AntiqueWhite|Kế toán|
+if(nội dung ko chính xác?) then (yes)
+    :Ghi chú và yêu cầu sửa;
+    stop
+else (no)
+endif
+stop 
+
+:Tạo báo cáo chấm công cuối tháng;
+|Quản lí|
+:Phê duyệt báo cáo;
+stop
+@enduml
+

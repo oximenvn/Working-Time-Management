@@ -1,0 +1,27 @@
+title Thông báo đến muộn
+@startuml
+|Nhân viên|
+start
+:Nhập thời gian đến muộn ;
+|#AntiqueWhite|Hệ thống|
+if(nội dung không đúng?) then (yes)
+    :Yêu cầu nhập lại;
+    |Nhân viên|
+    stop
+else (no)
+endif
+|Hệ thống|
+fork
+    :Thông báo tới quản lí;
+    |Quản lí|
+    :Nhận thông báo;
+fork again
+    |Hệ thống|
+    :Thông báo đến kế toán;
+    |Kế toán|
+    :Nhận thông báo;
+endfork
+|Hệ thống|
+stop
+@enduml
+
