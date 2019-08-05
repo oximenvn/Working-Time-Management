@@ -24,6 +24,6 @@ endif
 :Thông báo đến kế toán;
 |Kế toán|
 :Nhận thông báo;
-stop
+:Hoàn thành;
 @enduml
 

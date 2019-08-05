@@ -15,6 +15,6 @@ stop
 :Tạo báo cáo chấm công cuối tháng;
 |Quản lí|
 :Phê duyệt báo cáo;
-stop
+:Hoàn thành;
 @enduml
 
