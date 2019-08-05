@@ -6,6 +6,7 @@ start
 |#AntiqueWhite|Kế toán|
 if(nội dung ko chính xác?) then (yes)
     :Ghi chú và yêu cầu sửa;
+    |Nhân viên|
     stop
 else (no)
 endif
