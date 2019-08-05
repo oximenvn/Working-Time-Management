@@ -16,46 +16,48 @@ title  Sơ đồ  Use Case
 U <|-down- Ad : extends
 U <|-up- Ac : extends
 
-rectangle "Quản lí nhân viên" {
-Ad -- (Thêm nhân viên)
-Ad -- (Xóa nhân viên)
-Ad -- (Xem danh sách nhân viên)
-Ad -- (Thay đổi thông tin nhân viên)
-Ad -- (Thay đổi quyền của nhân viên) 
-note right of (Thay đổi quyền của nhân viên) 
-    Quản lí có thể thêm quyền của nhân viên  
-    thành kế  toán, quản lí và ngược lại.
-end note
-(Thay đổi thông tin nhân viên) <.. (Thay đổi quyền của nhân viên) : extends
+rectangle "Working Time System"  {
+    rectangle "Quản lí nhân viên" {
+    Ad -- (Thêm nhân viên)
+    Ad -- (Xóa nhân viên)
+    Ad -- (Xem danh sách nhân viên)
+    Ad -- (Thay đổi thông tin nhân viên)
+    Ad -- (Thay đổi quyền của nhân viên) 
+    note right of (Thay đổi quyền của nhân viên) 
+        Quản lí có thể thêm quyền của nhân viên  
+        thành kế  toán, quản lí và ngược lại.
+    end note
+    (Thay đổi thông tin nhân viên) <.. (Thay đổi quyền của nhân viên) : extends
 
 
-U -- (Chỉnh sửa thông tin cá nhân)
+    U -- (Chỉnh sửa thông tin cá nhân)
 
 
-}
+    }
 
-rectangle "Quản lí thời gian làm việc" {
-Ad -- (Xác nhận báo cáo chấm công)
-note right of (Xác nhận báo cáo chấm công)
-    Sau khi báo cáo được thông qua, không thể sửa xóa được.
-end note
+    rectangle "Quản lí thời gian làm việc" {
+    Ad -- (Xác nhận báo cáo chấm công)
+    note right of (Xác nhận báo cáo chấm công)
+        Sau khi báo cáo được thông qua, không thể sửa xóa được.
+    end note
 
-U -- (Nhập thông tin về thời gian làm việc của họ)
-U -- (Sửa thông tin về thời gian làm việc của họ)
-U -- (Xóa thông tin về thời gian làm việc của họ)
-U -- (Xem thời gian làm việc của họ)
+    U -- (Nhập thông tin về thời gian làm việc của họ)
+    U -- (Sửa thông tin về thời gian làm việc của họ)
+    U -- (Xóa thông tin về thời gian làm việc của họ)
+    U -- (Xem thời gian làm việc của họ)
 
-Ac -- (Xem thời gian làm việc của nhân viên)
-Ac -- (Sửa thời gian làm việc của nhân viên)
-Ac -- (Xem báo cáo chấm công)
-Ac -- (Tạo báo cáo chấm công)
-note right of (Tạo báo cáo chấm công)
-    Báo cáo được tạo tự động. Nhân viên không thể
-    sửa thời gian làm việc sau khi báo cáo được tạo.
-end note
-Ac -- (Xóa báo cáo chấm công)
-note right of (Xóa báo cáo chấm công)
-    Kế toán chỉ có thể xóa báo cáo chưa được thông qua.
-end note
+    Ac -- (Xem thời gian làm việc của nhân viên)
+    Ac -- (Sửa thời gian làm việc của nhân viên)
+    Ac -- (Xem báo cáo chấm công)
+    Ac -- (Tạo báo cáo chấm công)
+    note right of (Tạo báo cáo chấm công)
+        Báo cáo được tạo tự động. Nhân viên không thể
+        sửa thời gian làm việc sau khi báo cáo được tạo.
+    end note
+    Ac -- (Xóa báo cáo chấm công)
+    note right of (Xóa báo cáo chấm công)
+        Kế toán chỉ có thể xóa báo cáo chưa được thông qua.
+    end note
+    }
 }
 @enduml
