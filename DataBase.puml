@@ -1,0 +1,80 @@
+@startuml
+' uncomment the line below if you're using computer with a retina display
+' skinparam dpi 300
+!define Table(name,desc) class name as "desc" << (T,#FFAAAA) >>
+' we use bold for primary key
+' green color for unique
+' and underscore for not_null
+!define primary_key(x) <b>x</b>
+!define unique(x) <color:green>x</color>
+!define not_null(x) <u>x</u>
+' other tags available:
+' <i></i>
+' <back:COLOR></color>, where color is a color name or html color code
+' (#FFAACC)
+' see: http://plantuml.com/classes.html#More
+hide methods
+hide stereotypes
+
+' entities
+
+Table(Account,"Account \n Sử dụng obj Account của Salesforce") { 
+  primary_key(Id) Id
+} 
+
+Table(Team,"Team\n Team table"){
+    primary_key(Id) Id
+    not_null(Name) String
+    not_null(IsDeleted) boolean
+    not_null(CreatedById) reference
+    not_null(CreatedDate) dateTime
+    not_null(LastModifiedById) reference
+    not_null(LastModifiedDate) dateTime
+    not_null(SystemModstamp) dateTime
+    
+}
+
+Table(Team_Member,"Team Member\n Team member table"){
+    primary_key(TeamId) reference
+    primary_key(AccountId) reference
+    not_null(IsLeader) boolean
+    not_null(IsDeleted) boolean
+    not_null(CreatedById) reference
+    not_null(CreatedDate) dateTime
+    not_null(LastModifiedById) reference
+    not_null(LastModifiedDate) dateTime
+    not_null(SystemModstamp) dateTime
+    
+}
+
+Table(Working_Time,"Working Time Table"){
+    primary_key(AccountId) reference
+    primary_key(Date) Date
+    WeekDay string
+    StartTime dateTime
+    EndTime dateTime
+    LateHours number
+    HolidayHours number 
+    not_null(ComfirmedByLeader) boolean
+    not_null(ComfirmedByManager) boolean
+    not_null(IsDeleted) boolean
+    not_null(CreatedById) reference
+    not_null(CreatedDate) dateTime
+    not_null(LastModifiedById) reference
+    not_null(LastModifiedDate) dateTime
+    not_null(SystemModstamp) dateTime
+}
+
+' zero or one
+A |o--o| B
+
+' exactly one
+C ||--|| D
+
+' zero or many
+E }o--o{ F
+
+' one or many
+G }|--|{ H
+
+@enduml
