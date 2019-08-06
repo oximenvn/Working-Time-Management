@@ -1,4 +1,5 @@
 @startuml
+left to right direction
 ' uncomment the line below if you're using computer with a retina display
 ' skinparam dpi 300
 !define Table(name,desc) class name as "desc" << (T,#FFAAAA) >>
@@ -19,25 +20,14 @@ hide stereotypes
 ' entities
 
 Table(Account,"Account \n Sử dụng obj Account của Salesforce") { 
-  primary_key(Id) Id
+    primary_key(Id) Id
+    TeamId reference
 } 
 
 Table(Team,"Team\n Team table"){
     primary_key(Id) Id
     not_null(Name) String
-    not_null(IsDeleted) boolean
-    not_null(CreatedById) reference
-    not_null(CreatedDate) dateTime
-    not_null(LastModifiedById) reference
-    not_null(LastModifiedDate) dateTime
-    not_null(SystemModstamp) dateTime
-    
-}
-
-Table(Team_Member,"Team Member\n Team member table"){
-    primary_key(TeamId) reference
-    primary_key(AccountId) reference
-    not_null(IsLeader) boolean
+    LeaderId reference
     not_null(IsDeleted) boolean
     not_null(CreatedById) reference
     not_null(CreatedDate) dateTime
@@ -65,16 +55,11 @@ Table(Working_Time,"Working Time Table"){
     not_null(SystemModstamp) dateTime
 }
 
-' zero or one
-A |o--o| B
-
-' exactly one
-C ||--|| D
-
-' zero or many
-E }o--o{ F
+' relationships
 
 ' one or many
-G }|--|{ H
+Account }|--|| Team   :"1 người chỉ thuộc 1 team, 1 team có nhiều người"
+Account ||--|{ Working_Time :"1 người có nhiều bản ghi thời gian làm việc"
+Account ||--o{ Team  :"1 người có thể là leader nhiều team, hoặc ko team nào"
 
 @enduml
