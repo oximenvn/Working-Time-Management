@@ -19,7 +19,7 @@ hide stereotypes
 
 ' entities
 
-Table(Account,"Account \n Sử dụng obj Account của Salesforce") { 
+Table(User,"User \n Sử dụng obj User của Salesforce") { 
     primary_key(Id) Id
     TeamId reference
 } 
@@ -58,8 +58,8 @@ Table(Working_Time,"Working Time Table"){
 ' relationships
 
 ' one or many
-Account }|--|| Team   :"1 người chỉ thuộc 1 team, 1 team có nhiều người"
-Account ||--|{ Working_Time :"1 người có nhiều bản ghi thời gian làm việc"
-Account ||--o{ Team  :"1 người có thể là leader nhiều team, hoặc ko team nào"
+User }|--|| Team   :"1 người chỉ thuộc 1 team, 1 team có nhiều người"
+User ||--|{ Working_Time :"1 người có nhiều bản ghi thời gian làm việc"
+User ||--o{ Team  :"1 người có thể là leader nhiều team, hoặc ko team nào"
 
 @enduml
