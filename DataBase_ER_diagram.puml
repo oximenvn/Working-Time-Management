@@ -59,6 +59,7 @@ Table(WorkingTime,"Working Time Table"){
 
 Table(Report,"Report Table"){
     primary_key(Id) Id
+    not_null(UserId) reference
     not_null(Year) number
     not_null(Month) number
     SumOfWorkingTime number
@@ -89,5 +90,6 @@ Table(Holiday,"Holiday Table"){
 User }|--|| Team   :"1 người chỉ thuộc 1 team, 1 team có nhiều người"
 User ||--|{ WorkingTime :"1 người có nhiều bản ghi thời gian làm việc"
 User ||--o{ Team  :"1 người có thể là leader nhiều team, hoặc ko team nào"
+User ||--o{ Report :"1 người có thể có nhiều report. Mỗi report ứng với 1 tháng làm việc."
 
 @enduml
