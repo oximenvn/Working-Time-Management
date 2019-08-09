@@ -21,6 +21,7 @@ hide stereotypes
 
 Table(User,"User \n Sử dụng obj User của Salesforce") { 
     primary_key(Id) Id
+    RemainingHoliday number
     TeamId reference
 } 
 
@@ -37,8 +38,9 @@ Table(Team,"Team\n Team table"){
     
 }
 
-Table(Working_Time,"Working Time Table"){
-    primary_key(AccountId) reference
+Table(WorkingTime,"Working Time Table"){
+    primary_key(Id) Id
+    primary_key(UserId) reference
     primary_key(Date) Date
     WeekDay string
     StartTime dateTime
@@ -55,11 +57,37 @@ Table(Working_Time,"Working Time Table"){
     not_null(SystemModstamp) dateTime
 }
 
+Table(Report,"Report Table"){
+    primary_key(Id) Id
+    not_null(Year) number
+    not_null(Month) number
+    SumOfWorkingTime number
+    SumOfLateHours number
+    SumOfHolidayHours number
+    not_null(IsDeleted) boolean
+    not_null(CreatedById) reference
+    not_null(CreatedDate) dateTime
+    not_null(LastModifiedById) reference
+    not_null(LastModifiedDate) dateTime
+    not_null(SystemModstamp) dateTime
+}
+
+Table(Holiday,"Holiday Table"){
+    primary_key(Date) Date
+    Name string
+    not_null(IsDeleted) boolean
+    not_null(CreatedById) reference
+    not_null(CreatedDate) dateTime
+    not_null(LastModifiedById) reference
+    not_null(LastModifiedDate) dateTime
+    not_null(SystemModstamp) dateTime
+}
+
 ' relationships
 
 ' one or many
 User }|--|| Team   :"1 người chỉ thuộc 1 team, 1 team có nhiều người"
-User ||--|{ Working_Time :"1 người có nhiều bản ghi thời gian làm việc"
+User ||--|{ WorkingTime :"1 người có nhiều bản ghi thời gian làm việc"
 User ||--o{ Team  :"1 người có thể là leader nhiều team, hoặc ko team nào"
 
 @enduml
