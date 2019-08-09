@@ -1,0 +1,55 @@
+@startuml
+
+left to right direction
+
+skinparam actor {
+    BorderColor black
+    
+}
+
+title  Sơ đồ  Use Case  
+
+:Giám đốc: as Manager #green
+:Nhân viên: as Member  #yellow
+:Trưởng nhóm: as Leader #blue
+
+Member <|-up- Leader : extends
+
+rectangle "Working Time System"  {
+    rectangle "Quản lí nhân viên" {
+    Manager -- (Thêm nhân viên)
+    Manager -- (Xóa nhân viên)
+    Manager -- (Xem danh sách nhân viên)
+    Manager -- (Thay đổi thông tin nhân viên)
+    Manager -- (Thay đổi quyền của nhân viên) 
+    note right of (Thay đổi quyền của nhân viên) 
+        Quản lí có thể thêm quyền của nhân viên  
+        thành Trưởng nhóm và ngược lại.
+    end note
+    (Thay đổi thông tin nhân viên) <.. (Thay đổi quyền của nhân viên) : extends
+
+
+    Manager -- (Chỉnh sửa thông tin cá nhân)
+
+
+    }
+
+    rectangle "Quản lí thời gian làm việc" {
+    Manager -- (Xác nhận báo cáo thời gian làm việc)
+    note right of (Xác nhận báo cáo thời gian làm việc)
+        Sau khi báo cáo được thông qua, không thể sửa xóa được.
+    end note
+
+    Member -- (Nhập thông tin về thời gian làm việc của họ)
+    Member -- (Sửa thông tin về thời gian làm việc của họ)
+    Member -- (Xem thời gian làm việc của họ)
+
+    Leader -- (Xem thời gian làm việc của nhân viên)
+    Leader -- (Sửa thời gian làm việc của nhân viên)
+    Leader -- (Xác nhận thời gian làm việc của nhân viên)
+    note right of (Xác nhận thời gian làm việc của nhân viên)
+        Sau khi được xác nhận, nhân viên ko thay đổi được thời gian làm việc.
+    end note
+    }
+}
+@enduml

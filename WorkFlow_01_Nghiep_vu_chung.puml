@@ -1,0 +1,24 @@
+title Nghiệp vụ chung
+@startuml
+|Nhân viên|
+start
+:Nhập thời gian làm việc;
+|#AntiqueWhite|Trưởng nhóm|
+if(Phê duyệt nội dung) then (no)
+    :Ghi chú và yêu cầu sửa;
+    |Nhân viên|
+    stop
+else (yes)
+endif
+
+|Quản lí|
+if(Phê duyệt báo cáo) then (yes)
+else (no)
+    :Ghi chú và yêu cầu sửa;
+    |Nhân viên|
+    stop
+endif
+|Quản lí|
+:Hoàn thành;
+@enduml
+
